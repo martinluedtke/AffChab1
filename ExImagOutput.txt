@@ -1,0 +1,56 @@
+Known solutions to y² = x⁶ - 4x⁵ + 2x⁴ + 6x³ + x² - 10x + 1 over ℤ[ζ₃]
+    (0,±1),  (2,±1),  (1,±√-3)
+
+Let P₀ = (0,1), P₁ = (2,1), P₂ = (1,√-3).
+Basis of log differentials H^0(X, Ω^1(D)):
+    ω₀ = dx/y,  ω₁ = x dx/y,  ω₂ = x^2 dx/y
+Auxiliary prime: p = (2-√-3) over rational prime 7
+
+Check that [P₁] - [P₀] and [P₂] - [P₀] are linearly independent in the Jacobian
+by computing the determinant of the 2x2 matrix (∫_{P₀}^{Pᵢ} ωⱼ):
+    3*7^2 + 2*7^3 + 7^4 + 5*7^5 + 3*7^6 + 5*7^7 + 3*7^8 + 2*7^9 + 7^10 + 2*7^11 + 5*7^12 + 6*7^13 + 4*7^14 + 7^15 + O(7^16)
+From Magma's RankBound we know the rank of the Jacobian over K is at most 2,
+so [P₁] - [P₀] and [P₂] - [P₀] span a subgroup of full rank.
+
+The only bad prime for the minimal model is 1549 and there is only one component.
+So all O_K-points have the same reduction type.
+
+The Affine Chabauty Condition is satisfied, so there exists a nontrivial log differential η
+such that ∫_P^Q η vanishes for all pairs of O_K-points P,Q.
+Hence the function ρ(P) := det(∫_{P₀}^{Pᵢ} ωⱼ)_{1 ≤ i,j ≤ 3} with P₃ = P vanishes for all O_K-points P.
+
+Check that the function vanishes on all known points:
+    ρ(P₀) = 0
+    ρ(P₁) = O(7^17)
+    ρ(P₂) = O(7^17)
+    ρ(ιP₀) = O(7^17)
+    ρ(ιP₁) = O(7^17)
+    ρ(ιP₂) = O(7^17)
+
+The function vanishes on integral points but not necessarily on rational points:
+    ρ((33/20, 4073/8000)) = 7^3 + 2*7^5 + 5*7^7 + 2*7^8 + 7^9 + 4*7^10 + 5*7^11 + 6*7^12 + 7^13 + 5*7^14 + 5*7^15 + 7^16 + O(7^17)
+
+Find coefficients αⱼ for the annihilating differential η = α₀ω₀ + α₁ω₁ + α₂ω₂ as 2x2 minors in the determinant equation:
+    α₀ = 3*7^2 + 6*7^3 + 7^4 + 6*7^5 + 6*7^6 + 4*7^7 + 7^9 + 5*7^10 + 3*7^11 + 4*7^12 + 3*7^13 + 6*7^15 + O(7^16)
+    α₁ = 5*7^4 + 6*7^5 + 2*7^7 + 2*7^9 + 4*7^10 + 4*7^12 + 4*7^13 + 3*7^14 + 5*7^15 + O(7^16)
+    α₂ = 3*7^2 + 2*7^3 + 7^4 + 5*7^5 + 3*7^6 + 5*7^7 + 3*7^8 + 2*7^9 + 7^10 + 2*7^11 + 5*7^12 + 6*7^13 + 4*7^14 + 7^15 + O(7^16)
+
+For each known point P, compute the power series expansion of ∫_P^{Q(t)} η in the parameter t with x(t) = x(P) + 7t.
+Valuations of coefficients:
+    P = P₀:	 [+Infinity, 3, 4, 5, 6, 11, 8, 9, 10, 11, 12, 14, 14, 15, 15]
+    P = P₁:	 [+Infinity, 3, 4, 5, 7, 7, 8, 8, 10, 11, 12, 13, 14, 17, 15]
+    P = P₂:	 [+Infinity, 3, 4, 5, 6, 7, 8, 8, 10, 11, 12, 13, 14, 15, 16]
+    P = ιP₀:	 [+Infinity, 3, 4, 5, 6, 11, 8, 9, 10, 11, 12, 14, 14, 15, 15]
+    P = ιP₁:	 [+Infinity, 3, 4, 5, 7, 7, 8, 8, 10, 11, 12, 13, 14, 17, 15]
+    P = ιP₂:	 [+Infinity, 3, 4, 5, 6, 7, 8, 8, 10, 11, 12, 13, 14, 15, 16]
+In each case, -∞ is the only nonpositive slope, corresponding to t=0, so the known points are the only O_K-points in their residue disc.
+
+Check that known points cover all residue discs.
+𝔽₇-points: [(0, 1), (0, 6), (1, 2), (1, 5), (2, 1), (2, 6)]
+    P₀ reduces to (0, 1) modulo (2-√-3)
+    P₁ reduces to (2, 1) modulo (2-√-3)
+    P₂ reduces to (1, 2) modulo (2-√-3)
+    ιP₀ reduces to (0, 6) modulo (2-√-3)
+    ιP₁ reduces to (2, 6) modulo (2-√-3)
+    ιP₂ reduces to (1, 5) modulo (2-√-3)
+All residue discs are covered, so we found all O_K-points.
